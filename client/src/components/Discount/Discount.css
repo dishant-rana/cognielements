@@ -62,3 +62,9 @@
   color: rgb(216, 8, 29) !important;
   margin-top: 5px;
 }
+.isDisbaled {
+  background-color: #68757d !important;
+}
+.isDisbaled:hover {
+  cursor: not-allowed !important;
+}

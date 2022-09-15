@@ -6,17 +6,22 @@ const Discount = () => {
   const [discountAmount, setDiscountAmount] = useState(0);
   const [warning, setWarning] = useState(false);
   const [error, setError] = useState(false);
+  const [isDisabled, setisDisabled] = useState(true);
   useEffect(() => {
     if (discountAmount >= 150 && discountAmount < 1000) {
       setWarning(true);
       setError(false);
+      setisDisabled(true);
     } else if (discountAmount >= 1000) {
       setWarning(false);
       setError(true);
+      setisDisabled(true);
     } else {
       setWarning(false);
       setError(false);
+      setisDisabled(false);
     }
+    if (discountAmount == 0) setisDisabled(true);
   }, [discountAmount]);
   return (
     <div className="discount-counter">
@@ -65,7 +70,12 @@ const Discount = () => {
               <input type="text" placeholder="Net Applicable Discount" />
             </div>
             <div className="discount-submit-button">
-              <button type="button">Apply Discount</button>
+              <button
+                type="button"
+                className={isDisabled ? "isDisbaled" : "notDisabled"}
+              >
+                Apply Discount
+              </button>
             </div>
           </div>
         </div>
